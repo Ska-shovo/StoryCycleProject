@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoryCycle - Turning Stories into New Beginnings</title>
+    <style>
+        :root {
+            --mango: #F4A261;
+            --yellow: #E9C46A;
+            --white: #FFFFFF;
+            --dark: #2B2D42;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: var(--mango);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        .search-bar {
+            flex: 1;
+            margin: 0 2rem;
+            position: relative;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+        }
+
+        .search-bar select {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: transparent;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos/1920/1080?random=1');
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            animation: slideIn 1s ease-in-out;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 2rem;
+            text-align: center;
+            background: var(--yellow);
+        }
+
+        .categories h2 {
+            margin-bottom: 1rem;
+        }
+
+        .category-links a {
+            text-decoration: none;
+            color: var(--dark);
+            margin: 0 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Products */
+        .products {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            color: var(--mango);
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .wishlist-btn, .buy-btn {
+            background: var(--yellow);
+            border: none;
+            padding: 0.5rem;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        /* Stories */
+        .stories {
+            padding: 2rem;
+            background: var(--mango);
+            text-align: center;
+        }
+
+        .stories h2 {
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .story-card {
+            background: var(--white);
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 1rem;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+        }
+
+        .founder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .founder-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Seller Dashboard */
+        .seller-dashboard, .buyer-dashboard, .admin-dashboard {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .dashboard-section {
+            background: var(--white);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+        }
+
+        /* Profile Section */
+        .profile-section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .profile-picture {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        .modal-content h2 {
+            margin-bottom: 1rem;
+        }
+
+        .modal-content input, .modal-content select, .modal-content textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .modal-content button {
+            background: var(--mango);
+            color: var(--white);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .search-bar {
+                margin: 1rem 0;
+            }
+
+            .nav-links a {
+                margin: 0.5rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo" onclick="goToHome()">StoryCycle</div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search products...">
+            <select id="searchFilter">
+                <option value="all">All Categories</option>
+                <option value="art">Art</option>
+                <option value="handicrafts">Handicrafts</option>
+                <option value="autism">Autism Creations</option>
+            </select>
+        </div>
+        <div class="nav-links">
+            <a href="#" onclick="showSection('seller-dashboard')">Sell</a>
+            <a href="#" onclick="showModal('login')">Login</a>
+            <a href="#" onclick="showModal('signup')">Signup</a>
+            <a href="#" onclick="showSection('profile-section')">Profile</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Turning Stories Into A New Beginnings</h1>
+            <p>Support Bangladeshi artists, women entrepreneurs, and autism creators and spread our culture.</p>
+            <a href="#products" class="cta-button">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2>Explore Categories</h2>
+        <div class="category-links">
+            <a href="#" onclick="filterProducts('art')">Art</a>
+            <a href="#" onclick="filterProducts('handicrafts')">Handicrafts</a>
+            <a href="#" onclick="filterProducts('autism')">Autism Creations</a>
+        </div>
+    </section>
+
+    <!-- Products -->
+    <section class="products" id="products">
+        <h2>Featured Products</h2>
+        <div class="product-grid" id="productGrid"></div>
+    </section>
+
+    <!-- Stories -->
+    <section class="stories">
+        <h2>Our Stories</h2>
+        <div class="story-grid" id="storyGrid"></div>
+    </section>
+
+    <!-- Seller Dashboard -->
+    <section class="seller-dashboard" id="seller-dashboard">
+        <h2>Seller Dashboard</h2>
+        <div class="dashboard-section">
+            <h3>Add New Product</h3>
+            <input type="text" id="productName" placeholder="Product Name">
+            <input type="text" id="productDescription" placeholder="Description">
+            <input type="number" id="productPrice" placeholder="Price (BDT)">
+            <select id="productCategory">
+                <option value="art">Art</option>
+                <option value="handicrafts">Handicrafts</option>
+                <option value="autism">Autism Creations</option>
+            </select>
+            <input type="file" id="productImage" accept="image/*">
+            <button onclick="addProduct()">Add Product</button>
+        </div>
+        <div class="dashboard-section">
+            <h3>Your Products</h3>
+            <div id="sellerProducts"></div>
+        </div>
+    </section>
+
+    <!-- Buyer Dashboard -->
+    <section class="buyer-dashboard" id="buyer-dashboard">
+        <h2>Buyer Dashboard</h2>
+        <div class="dashboard-section">
+            <h3>Your Cart</h3>
+            <div id="cartItems"></div>
+        </div>
+        <div class="dashboard-section">
+            <h3>Your Wishlist</h3>
+            <div id="wishlistItems"></div>
+        </div>
+    </section>
+
+    <!-- Admin Dashboard -->
+    <section class="admin-dashboard" id="admin-dashboard">
+        <h2>Admin Dashboard</h2>
+        <div class="dashboard-section">
+            <h3>Manage Banner</h3>
+            <input type="file" id="bannerImage" accept="image/*">
+            <button onclick="updateBanner()">Update Banner</button>
+        </div>
+        <div class="dashboard-section">
+            <h3>Manage Sellers</h3>
+            <div id="sellerList"></div>
+        </div>
+    </section>
+
+    <!-- Profile Section -->
+    <section class="profile-section" id="profile-section">
+        <h2>Your Profile</h2>
+        <img src="https://picsum.photos/150?random=2" alt="Profile Picture" class="profile-picture">
+        <input type="file" id="profilePicture" accept="image/*">
+        <input type="text" id="profileName" placeholder="Name">
+        <input type="email" id="profileEmail" placeholder="Email">
+        <button onclick="updateProfile()">Update Profile</button>
+        <div id="adminStorySection" style="display: none; margin-top: 2rem;">
+            <h3>Add New Story</h3>
+            <input type="text" id="storyTitle" placeholder="Story Title">
+            <textarea id="storyContent" placeholder="Story Content" rows="5"></textarea>
+            <input type="file" id="storyImage" accept="image/*">
+            <button onclick="addStory()">Add Story</button>
+        </div>
+    </section>
+
+    <!-- Login/Signup Modal -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <h2 id="modal-title">Login</h2>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <input type="email" id="email" placeholder="Email" style="display: none;">
+            <select id="userRole">
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
+                <option value="admin">Admin</option>
+            </select>
+            <button id="authSubmit" onclick="handleAuth()">Submit</button>
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: support@storycycle.com</p>
+            <p>Phone: +880 1234-567890</p>
+        </div>
+        <div class="footer-section">
+            <h3>Policies</h3>
+            <p><a href="#" style="color: var(--yellow);">Privacy Policy</a></p>
+            <p><a href="#" style="color: var(--yellow);">Terms of Service</a></p>
+        </div>
+        <div class="footer-section">
+            <h3>About Us</h3>
+            <p>Our vision is to empower Bangladeshi creators and share their stories globally.</p>
+            <div class="founder-grid">
+                <div class="founder-card">
+                    <img src="https://i.ibb.co/6wL4hLq/waliur-rahman.jpg" alt="Waliur Rahman">
+                    <p>Waliur Rahman<br>CEO</p>
+                </div>
+                <div class="founder-card">
+                    <img src="https://i.ibb.co/KsM2t5h/shovo-kumar.jpg" alt="Shovo Kumar Acharjo">
+                    <p>Shovo Kumar Acharjo<br>Director</p>
+                </div>
+                <div class="founder-card">
+                    <img src="https://i.ibb.co/7nqXz3M/punam-paul.jpg" alt="Punam Paul">
+                    <p>Punam Paul<br>GM</p>
+                </div>
+                <div class="founder-card">
+                    <img src="https://i.ibb.co/5vXzL4W/noyon-chanda-sarkar.jpg" alt="Noyon Chandra Sarkar">
+                    <p>Noyon Chanda Sarkar<br>CFO</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let currentUser = null;
+        let users = [];
+        let products = [];
+        let wishlist = [];
+        let cart = [];
+        let stories = [
+            { title: "Artist's Journey", content: "From a small village to global recognition...", image: "https://picsum.photos/300/200?random=7" },
+            { title: "Crafting Dreams", content: "Empowering women through handicrafts...", image: "https://picsum.photos/300/200?random=8" }
+        ];
+
+        function goToHome() {
+            document.querySelectorAll('section').forEach(section => section.style.display = 'none');
+            document.querySelector('.hero').style.display = 'flex';
+            document.querySelector('.categories').style.display = 'block';
+            document.querySelector('.products').style.display = 'block';
+            document.querySelector('.stories').style.display = 'block';
+        }
+
+        function showSection(sectionId) {
+            if (!currentUser && sectionId !== 'profile-section') {
+                alert('Please login or signup first');
+                showModal('login');
+                return;
+            }
+            document.querySelectorAll('section').forEach(section => section.style.display = 'none');
+            document.getElementById(sectionId).style.display = 'block';
+            if (sectionId === 'seller-dashboard') loadSellerProducts();
+            if (sectionId === 'buyer-dashboard') loadBuyerDashboard();
+            if (sectionId === 'admin-dashboard') loadAdminDashboard();
+            if (sectionId === 'profile-section') {
+                document.getElementById('adminStorySection').style.display = currentUser?.role === 'admin' ? 'block' : 'none';
+                loadProfile();
+            }
+        }
+
+        function showModal(type) {
+            const modal = document.getElementById('auth-modal');
+            const title = document.getElementById('modal-title');
+            const emailInput = document.getElementById('email');
+            const submitButton = document.getElementById('authSubmit');
+            
+            if (type === 'signup') {
+                title.textContent = 'Signup';
+                emailInput.style.display = 'block';
+                submitButton.onclick = handleSignup;
+            } else {
+                title.textContent = 'Login';
+                emailInput.style.display = 'none';
+                submitButton.onclick = handleAuth;
+            }
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('auth-modal').style.display = 'none';
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+            document.getElementById('email').value = '';
+        }
+
+        function handleAuth() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const role = document.getElementById('userRole').value;
+            
+            const user = users.find(u => u.username === username && u.password === password && u.role === role);
+            if (user) {
+                currentUser = user;
+                closeModal();
+                alert(`Logged in as ${username} (${role})`);
+                if (role === 'seller') showSection('seller-dashboard');
+                if (role === 'buyer') showSection('buyer-dashboard');
+                if (role === 'admin') showSection('admin-dashboard');
+            } else {
+                alert('Invalid credentials or user not found');
+            }
+        }
+
+        function handleSignup() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            const role = document.getElementById('userRole').value;
+            
+            if (username && password && email) {
+                if (users.find(u => u.username === username)) {
+                    alert('Username already exists');
+                    return;
+                }
+                const newUser = { username, password, email, role };
+                users.push(newUser);
+                currentUser = newUser;
+                closeModal();
+                alert(`Account created for ${username} (${role})`);
+                if (role === 'seller') showSection('seller-dashboard');
+                if (role === 'buyer') showSection('buyer-dashboard');
+                if (role === 'admin') showSection('admin-dashboard');
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function loadProfile() {
+            if (currentUser) {
+                document.getElementById('profileName').value = currentUser.username;
+                document.getElementById('profileEmail').value = currentUser.email;
+            }
+        }
+
+        function addProduct() {
+            if (!currentUser || currentUser.role !== 'seller') {
+                alert('Please login as a seller');
+                return;
+            }
+            const name = document.getElementById('productName').value;
+            const description = document.getElementById('productDescription').value;
+            const price = document.getElementById('productPrice').value;
+            const category = document.getElementById('productCategory').value;
+            const image = document.getElementById('productImage').files[0] ? URL.createObjectURL(document.getElementById('productImage').files[0]) : 'https://picsum.photos/250/200?random=9';
+
+            if (name && description && price && category) {
+                const product = { id: products.length + 1, name, description, price, category, image, seller: currentUser.username };
+                products.push(product);
+                loadProducts();
+                loadSellerProducts();
+                alert('Product added successfully!');
+                document.getElementById('productName').value = '';
+                document.getElementById('productDescription').value = '';
+                document.getElementById('productPrice').value = '';
+                document.getElementById('productImage').value = '';
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function addStory() {
+            if (currentUser?.role !== 'admin') {
+                alert('Only admins can add stories');
+                return;
+            }
+            const title = document.getElementById('storyTitle').value;
+            const content = document.getElementById('storyContent').value;
+            const image = document.getElementById('storyImage').files[0] ? URL.createObjectURL(document.getElementById('storyImage').files[0]) : 'https://picsum.photos/300/200?random=10';
+
+            if (title && content) {
+                stories.push({ title, content, image });
+                loadStories();
+                document.getElementById('storyTitle').value = '';
+                document.getElementById('storyContent').value = '';
+                document.getElementById('storyImage').value = '';
+                alert('Story added successfully!');
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function loadProducts(filter = 'all') {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = '';
+            let filteredProducts = filter === 'all' ? products : products.filter(p => p.category === filter);
+            
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p class="price">${product.price} BDT</p>
+                        <button class="wishlist-btn" onclick="addToWishlist(${product.id})">Add to Wishlist</button>
+                        <button onclick="addToCart(${product.id})">Add to Cart</button>
+                        <button class="buy-btn" onclick="buyNow(${product.id})">Buy This</button>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        function filterProducts(category) {
+            loadProducts(category);
+        }
+
+        function addToWishlist(productId) {
+            if (!currentUser || currentUser.role !== 'buyer') {
+                alert('Please login as a buyer');
+                return;
+            }
+            if (!wishlist.find(p => p.id === productId)) {
+                const product = products.find(p => p.id === productId);
+                wishlist.push(product);
+                alert('Added to Wishlist!');
+                loadBuyerDashboard();
+            }
+        }
+
+        function addToCart(productId) {
+            if (!currentUser || currentUser.role !== 'buyer') {
+                alert('Please login as a buyer');
+                return;
+            }
+            if (!cart.find(p => p.id === productId)) {
+                const product = products.find(p => p.id === productId);
+                cart.push(product);
+                alert('Added to Cart!');
+                loadBuyerDashboard();
+            }
+        }
+
+        function buyNow(productId) {
+            if (!currentUser || currentUser.role !== 'buyer') {
+                alert('Please login as a buyer to purchase');
+                return;
+            }
+            const product = products.find(p => p.id === productId);
+            cart.push(product);
+            loadBuyerDashboard();
+            alert('Your order is now on processing');
+        }
+
+        function loadSellerProducts() {
+            const sellerProducts = document.getElementById('sellerProducts');
+            sellerProducts.innerHTML = '';
+            const userProducts = products.filter(p => p.seller === currentUser?.username);
+            userProducts.forEach(product => {
+                const div = document.createElement('div');
+                div.innerHTML = `<p>${product.name} - ${product.price} BDT - ${product.category}</p>`;
+                sellerProducts.appendChild(div);
+            });
+        }
+
+        function loadBuyerDashboard() {
+            const cartItems = document.getElementById('cartItems');
+            const wishlistItems = document.getElementById('wishlistItems');
+            cartItems.innerHTML = '';
+            wishlistItems.innerHTML = '';
+
+            cart.forEach(item => {
+                const div = document.createElement('div');
+                div.innerHTML = `<p>${item.name} - ${item.price} BDT</p>`;
+                cartItems.appendChild(div);
+            });
+
+            wishlist.forEach(item => {
+                const div = document.createElement('div');
+                div.innerHTML = `<p>${item.name} - ${item.price} BDT</p>`;
+                wishlistItems.appendChild(div);
+            });
+        }
+
+        function loadAdminDashboard() {
+            const sellerList = document.getElementById('sellerList');
+            sellerList.innerHTML = '';
+            const sellers = [...new Set(products.map(p => p.seller))];
+            sellers.forEach(seller => {
+                const div = document.createElement('div');
+                div.innerHTML = `<p>Seller: ${seller}</p>`;
+                sellerList.appendChild(div);
+            });
+        }
+
+        function updateBanner() {
+            if (!currentUser || currentUser.role !== 'admin') {
+                alert('Only admins can update the banner');
+                return;
+            }
+            const bannerImage = document.getElementById('bannerImage').files[0];
+            if (bannerImage) {
+                const url = URL.createObjectURL(bannerImage);
+                document.querySelector('.hero').style.backgroundImage = `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${url})`;
+                alert('Banner updated!');
+            }
+        }
+
+        function updateProfile() {
+            if (!currentUser) {
+                alert('Please login to update profile');
+                return;
+            }
+            const profilePicture = document.getElementById('profilePicture').files[0];
+            const name = document.getElementById('profileName').value;
+            const email = document.getElementById('profileEmail').value;
+            
+            if (name && email) {
+                currentUser.username = name;
+                currentUser.email = email;
+                const userIndex = users.findIndex(u => u.username === currentUser.username);
+                if (userIndex !== -1) {
+                    users[userIndex] = currentUser;
+                }
+                if (profilePicture) {
+                    document.querySelector('.profile-picture').src = URL.createObjectURL(profilePicture);
+                }
+                alert('Profile updated!');
+            } else {
+                alert('Please fill in all fields');
+            }
+        }
+
+        function loadStories() {
+            const storyGrid = document.getElementById('storyGrid');
+            storyGrid.innerHTML = '';
+            stories.forEach(story => {
+                const card = document.createElement('div');
+                card.className = 'story-card';
+                card.innerHTML = `
+                    <img src="${story.image}" alt="${story.title}">
+                    <h3>${story.title}</h3>
+                    <p>${story.content}</p>
+                `;
+                storyGrid.appendChild(card);
+            });
+        }
+
+        // Search Functionality
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const query = this.value.toLowerCase();
+            const filter = document.getElementById('searchFilter').value;
+            const filteredProducts = products.filter(p => 
+                p.name.toLowerCase().includes(query) && 
+                (filter === 'all' || p.category === filter)
+            );
+            loadProductsFiltered(filteredProducts);
+        });
+
+        function loadProductsFiltered(filteredProducts) {
+            const productGrid = document.getElementById('productGrid');
+            productGrid.innerHTML = '';
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>${product.description}</p>
+                        <p class="price">${product.price} BDT</p>
+                        <button class="wishlist-btn" onclick="addToWishlist(${product.id})">Add to Wishlist</button>
+                        <button onclick="addToCart(${product.id})">Add to Cart</button>
+                        <button class="buy-btn" onclick="buyNow(${product.id})">Buy This</button>
+                    </div>
+                `;
+                productGrid.appendChild(card);
+            });
+        }
+
+        // Initial Load
+        loadProducts();
+        loadStories();
+        goToHome();
+    </script>
+</body>
+</html>
