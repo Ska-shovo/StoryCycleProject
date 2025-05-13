@@ -6,10 +6,10 @@
     <title>StoryCycle - Turning Stories into New Beginnings</title>
     <style>
         :root {
-            --mango: #F4A261;
-            --yellow: #E9C46A;
+            --mango: #b1a47d;
+            --yellow: #ffedc1;
             --white: #FFFFFF;
-            --dark: #2B2D42;
+            --dark: #474851;
         }
 
         * {
@@ -80,7 +80,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://picsum.photos/1920/1080?random=1');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://ik.imagekit.io/storycycle/story/yourstory-HS-listicle-on-handicrafts-industry-feature-1.avif?updatedAt=1747156092278');
             background-size: cover;
             display: flex;
             align-items: center;
@@ -400,7 +400,7 @@
 
     <!-- Stories -->
     <section class="stories">
-        <h2>Our Stories</h2>
+        <h2>তাদের গল্প</h2>
         <div class="story-grid" id="storyGrid"></div>
     </section>
 
@@ -456,7 +456,7 @@
     <!-- Profile Section -->
     <section class="profile-section" id="profile-section">
         <h2>Your Profile</h2>
-        <img src="https://picsum.photos/150?random=2" alt="Profile Picture" class="profile-picture">
+        <img src="https://ik.imagekit.io/storycycle/story/avatar-icon-on-black-round-flat-symbol-vector-21698060.jpg?updatedAt=1747156471002" alt="Profile Picture" class="profile-picture">
         <input type="file" id="profilePicture" accept="image/*">
         <input type="text" id="profileName" placeholder="Name">
         <input type="email" id="profileEmail" placeholder="Email">
@@ -493,6 +493,7 @@
             <h3>Contact</h3>
             <p>Email: support@storycycle.com</p>
             <p>Phone: +880 1234-567890</p>
+            <p><img src="https://ik.imagekit.io/storycycle/story/round-blue-facebook-logo-with-white-thick-border-and-long-shadow-on-a-transparent-background-free-png.webp?updatedAt=1747165646528" alt="Facebook Icon" style="width: 20px; height: 20px; vertical-align: middle; margin-right: 5px;"> <a href="https://www.facebook.com/share/1AQfVTfBCc/" target="_blank" style="color: #3b5998; text-decoration: none;">Follow us on Facebook</a></p>
         </div>
         <div class="footer-section">
             <h3>Policies</h3>
@@ -500,23 +501,29 @@
             <p><a href="#" style="color: var(--yellow);">Terms of Service</a></p>
         </div>
         <div class="footer-section">
+            <h3>Our Partners</h3>
+            <img src="https://ik.imagekit.io/storycycle/story/partner.jpg?updatedAt=1747165069624" alt="Strategic Partner 1" style="width: 250px; height: 250px; object-fit: contain;">
+          
+        </div>
+        </div>
+        <div class="footer-section">
             <h3>About Us</h3>
             <p>Our vision is to empower Bangladeshi creators and share their stories globally.</p>
             <div class="founder-grid">
                 <div class="founder-card">
-                    <img src="https://i.ibb.co/6wL4hLq/waliur-rahman.jpg" alt="Waliur Rahman">
+                    <img src="https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-07%20225500.png?updatedAt=1747156573239" alt="Waliur Rahman">
                     <p>Waliur Rahman<br>CEO</p>
                 </div>
                 <div class="founder-card">
-                    <img src="https://i.ibb.co/KsM2t5h/shovo-kumar.jpg" alt="Shovo Kumar Acharjo">
+                    <img src="https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-07%20225528.png?updatedAt=1747156617885" alt="Shovo Kumar Acharjo">
                     <p>Shovo Kumar Acharjo<br>Director</p>
                 </div>
                 <div class="founder-card">
-                    <img src="https://i.ibb.co/7nqXz3M/punam-paul.jpg" alt="Punam Paul">
+                    <img src="https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-07%20225542.png?updatedAt=1747156653195" alt="Punam Paul">
                     <p>Punam Paul<br>GM</p>
                 </div>
                 <div class="founder-card">
-                    <img src="https://i.ibb.co/5vXzL4W/noyon-chanda-sarkar.jpg" alt="Noyon Chandra Sarkar">
+                    <img src="https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-07%20225600.png?updatedAt=1747156684718" alt="Noyon Chandra Sarkar">
                     <p>Noyon Chanda Sarkar<br>CFO</p>
                 </div>
             </div>
@@ -526,12 +533,49 @@
     <script>
         let currentUser = null;
         let users = [];
-        let products = [];
+        let products = [
+    {
+        id: 1,
+        name: " Nakshi Kantha(নকশি কাঁথা)",
+        description: "গ্রামবাংলার ঐতিহ্য আর ভালোবাসার সেলাইয়ে গাঁথা হাতে তৈরি নকশিকাঁথা। প্রতিটি কাঁথায় আছে একটি গল্প—মায়া, স্মৃতি আর নিখুঁত কারুকার্যে ভরা। ঘরের সাজে কিংবা প্রিয়জনকে উপহারে,  এই অনন্য সৃষ্টি আপনার হৃদয় ছুঁয়ে যাবে।",
+        price: 2500,
+        category: "handicrafts",
+        image: "https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-14%20001722.png?updatedAt=1747160264437",
+        seller: "Rahima Begum"
+    },
+    {
+        id: 2,
+        name: "গ্রামীন মেঠোপথ (রংচিত্র)",
+        description: "নীরব জগতে বোনা রঙের গল্প—একজন অটিজম শিশুর চোখে দেখা বাংলাদেশের গ্রামীন পথ। সহজ সরল তুলিতে ফুটে উঠেছে প্রকৃতি, নিঃশব্দ ভালোবাসা আর এক চিলতে স্বপ্ন। “গ্রামীন মেঠোপথ” শুধু একটি ছবি নয়, এটি অনুভবের ভাষা।",
+        price: 150,
+        category: "autism",
+        image: "https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-14%20002045.png?updatedAt=1747160466438",
+        seller: "Autism Creations"
+    },
+    {
+        id: 3,
+        name: "ফুলদানি",
+        description: "প্রতিটা রঙ, প্রতিটা নকশা আমার নিজের হাতে করা—শুধু ঘরের সাজ নয়, মনের শান্তিও আনবে এটা। আপনি যদি কিছু ইউনিক আর বাংলা সংস্কৃতির ছোঁয়া চান, তবে এটি হতে পারে আপনার জন্য একদম পারফেক্ট পছন্দ।",
+        price: 100,
+        category: "art",
+        image: "https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-13%20234645.png?updatedAt=1747158427277",
+        seller: "Local Artisan"
+    },
+    {
+        id: 4,
+        name: "Jute Handbag",
+        description: "প্রাকৃতিক পাট দিয়ে তৈরি, পরিবেশবান্ধব ও টেকসই এই হ্যান্ডব্যাগটি যেমন স্টাইলিশ, তেমনি ব্যবহারেও আরামদায়ক। । বাজার হোক বা casually বাহিরে যাওয়া—সব জায়গায় মানিয়ে যাবে এই ব্যাগ।",
+        price: 300,
+        category: "handicrafts",
+        image: "https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-14%20003208.png?updatedAt=1747161238638",
+        seller: "Women’s Cooperative"
+    }
+];
         let wishlist = [];
         let cart = [];
         let stories = [
-            { title: "Artist's Journey", content: "From a small village to global recognition...", image: "https://picsum.photos/300/200?random=7" },
-            { title: "Crafting Dreams", content: "Empowering women through handicrafts...", image: "https://picsum.photos/300/200?random=8" }
+            { title: "সুতোয় বোনা স্বপ্ন: রহিমা বেগমের জয়ে ভরা যাত্রা", content: "রহিমা বেগম, এক নিরাশ্রয় গ্রামবাংলার নারী, সংসারের অভাব ঘোচাতে শুরু করেন হাতের কাজ — পাটের ব্যাগ, নকশিকাঁথা। নিজের উপার্জনে ছেলের পড়াশোনা করান। আজ তিনি শুধু একজন কারিগর নন, একজন অনুপ্রেরণা। চোখের কোণ বেয়ে নেমে আসে গর্বের অশ্রু।", image: "https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-13%20233514.png?updatedAt=1747157743980" },
+            { title: "পাটের বুননে স্বপ্ন গাঁথা: নারীদের আত্মনির্ভরতার গল্প", content: "একসময় সংসারের অভাবে জর্জরিত ছিলেন রোজিনা, মালা আর হাসিনা। পাট দিয়ে ছোটখাটো ঝুড়ি বানাতে শিখে গ্রামের অন্য নারীদের নিয়েও গড়ে তোলেন একটি নারী দল। আজ তারা নিজেরাই ব্যবসা চালান, সন্তানদের পড়াশোনার খরচ চালান, নিজেদের পায়ে দাঁড়িয়েছেন। একসাথে কাজ করে বদলে ফেলেছেন নিজেদের জীবন—হাসিমুখে বুনছেন শুধু ঝুড়ি নয়, বরং আত্মমর্যাদার গল্প।", image: "https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-13%20234105.png?updatedAt=1747158085807" }
         ];
 
         function goToHome() {
@@ -642,7 +686,7 @@
             const description = document.getElementById('productDescription').value;
             const price = document.getElementById('productPrice').value;
             const category = document.getElementById('productCategory').value;
-            const image = document.getElementById('productImage').files[0] ? URL.createObjectURL(document.getElementById('productImage').files[0]) : 'https://picsum.photos/250/200?random=9';
+            const image = document.getElementById('productImage').files[0] ? URL.createObjectURL(document.getElementById('productImage').files[0]) : 'https://ik.imagekit.io/storycycle/story/Screenshot%202025-05-13%20234645.png?updatedAt=1747158427277';
 
             if (name && description && price && category) {
                 const product = { id: products.length + 1, name, description, price, category, image, seller: currentUser.username };
